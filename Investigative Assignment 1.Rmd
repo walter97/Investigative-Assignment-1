@@ -7,6 +7,33 @@ output:
   html_document: default
 ---
 
+In an ANOVA analysis of Kila loan amounts issued in Mexico, India, and Indonesia, results showed evidence that at least one of the countries' mean loan amount differed significantly from the rest. 
+
+The parameters for the analysis were:
+
+mu1 = population 'Mexico' mean
+
+mu2 = country 'Indonesia' mean
+
+mu3 = country 'India' mean
+
+———
+
+Our hypotheses were:
+
+$$H_{o}:  μ_{1} = μ_{2} = μ_{3}$$
+
+$$H_{a}: Some\  μ_{i} =/= μ_{j}$$
+
+This analysis assumes that the effects are constant and additive. It also assumes that the residuals are random, independent, and normally distributed. Residuals are assumed to have the same variability in each group. 
+
+The test statistic in the analysis is 234.63, indicating that the difference between populations greatly exceeds the expected amount of error. The p-value is 2.2e-16, indicating that the probability of obtaining this result if our null hypothesis were true is exceedingly low.
+
+A possible limitation to this analysis is that the data is not quite normally distributed. One tail is much thicker than the other due to the presence of several high outlier loan amounts.
+
+In conclusion, with a very small p-value, we have evidence that at least one of the population mean Kila loan amounts for the three countries is different from the rest. Our test statistic is also much larger than 1 . All evidence indicates that the null hypothesis is not true
+
+
 We'll start by loading the necessary libraries.
 ```{r, message=FALSE}
 library("tidyverse")
@@ -32,34 +59,9 @@ Outliers have been excluded for visual clarity. All three countries have outlier
 boxplot(loan_amount~country,data=kiva_for_my_three_countries,outline=FALSE, col=(c("orange","red","darkgreen")))
 ```
 
-4. Conduct a one way ANOVA test. Make sure to include the parameters, hypothesis, assumptions, test statistic, p-value and conclusion. 
 
-5. Discuss any limitations due to assumptions not being properly met, if any. 
 
-6. Include the R code using good R programming style. See the readings in the module for more information. 
-
-Turn in a one page summary of your analysis and an additional page with your R code included. One way to submit the code is to copy and paste the code into a Word document. 
-
-PARAMETERS: 
-mu1 = population 'Mexico' mean
-mu2 = country 'Indonesia' mean
-mu3 = country 'India' mean
-
-HYPOTHESIS:
-H0: mu1 = mu2 = mu3
-HA: Some muI =/= muJ
-
-ASSUMPTIONS:
-- The effects are constant and additive.
-- Residuals are random and independent
-- Residuals have the same variability in each group. 
-- Residuals are normally distributed. 
-
-TEST STATISTIC: 234.63 
-
-P-VALUE: 2.2e-16
-
-CONCLUSION: With a very small p-value, we have evidence that at least one of the population mean Kila loan amounts for the three countries is different from the rest. Our test statistic is also much larger than 1, 
+Finally we'll run the ANOVA analysis. The test statistic is 234.63 and the p-value is 2.2e-16. 
 
 ```{r}
 
