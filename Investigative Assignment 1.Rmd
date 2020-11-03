@@ -1,0 +1,71 @@
+---
+title: "Investigate Assignment 1 - Ogozaly"
+author: "Walter Ogozaly"
+date: "11/2/2020"
+output: html_document
+---
+
+We'll start by loading the necessary libraries.
+```{r}
+library("tidyverse")
+library("readxl")
+```
+
+Now we load the file and filter for Mexico, India, and Indonesia. 
+```{r}
+
+
+kiva_sample <- read_excel("C:/Users/walte/OneDrive/Documents/RStudio Working Directory/Kiva_Sample.xlsx")
+
+
+kiva_for_my_three_countries <- filter(kiva_sample, country =="India" | country == "Mexico" | country == "Indonesia")
+```
+
+## Understanding the business problem.
+
+Below is a box plot showing loan amounts by country. Mexico has the largest Kiva loan amounts, followed by Indonesia and finally India. 
+
+Outliers have been excluded for visual clarity. All three countries have outliers in the direction of larger loans. Mexico has the highest outliers, as one might expect. Sample sizes are large enough, however, that we can proceed with the ANOVA test.
+
+```{r boxplot}
+
+boxplot(loan_amount~country,data=kiva_for_my_three_countries,outline=FALSE)
+```
+
+4. Conduct a one way ANOVA test. Make sure to include the parameters, hypothesis, assumptions, test statistic, p-value and conclusion. 
+
+5. Discuss any limitations due to assumptions not being properly met, if any. 
+
+6. Include the R code using good R programming style. See the readings in the module for more information. 
+
+Turn in a one page summary of your analysis and an additional page with your R code included. One way to submit the code is to copy and paste the code into a Word document. 
+
+PARAMETERS: 
+mu1 = population 'Mexico' mean
+mu2 = country 'Indonesia' mean
+mu3 = country 'India' mean
+
+HYPOTHESIS:
+H0: mu1 = mu2 = mu3
+HA: Some muI =/= muJ
+
+ASSUMPTIONS:
+- The effects are constant and additive.
+- Residuals are random and independent
+- Residuals have the same variability in each group. 
+- Residuals are normally distributed. 
+
+TEST STATISTIC: GO TO  (Links to an external site.) (8m 33s) Setup of the ANOVA test. It explains this 2/3 through. 
+
+P-VALUE: 2.2e-16
+CONCLUSION: With a very small p-value, we have evidence that at least one of the population mean Kila loan amounts for the three countries is different from the rest. 
+
+```{r}
+
+kiva_anova <- aov(kiva_for_my_three_countries$loan_amount~kiva_for_my_three_countries$country)
+
+anova(kiva_anova)
+
+```
+
+
