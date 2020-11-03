@@ -55,10 +55,11 @@ ASSUMPTIONS:
 - Residuals have the same variability in each group. 
 - Residuals are normally distributed. 
 
-TEST STATISTIC: GO TO  (Links to an external site.) (8m 33s) Setup of the ANOVA test. It explains this 2/3 through. 
+TEST STATISTIC: 234.63 
 
 P-VALUE: 2.2e-16
-CONCLUSION: With a very small p-value, we have evidence that at least one of the population mean Kila loan amounts for the three countries is different from the rest. 
+
+CONCLUSION: With a very small p-value, we have evidence that at least one of the population mean Kila loan amounts for the three countries is different from the rest. Our test statistic is also much larger than 1, 
 
 ```{r}
 
