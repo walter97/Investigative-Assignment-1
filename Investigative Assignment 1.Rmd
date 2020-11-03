@@ -2,17 +2,19 @@
 title: "Investigate Assignment 1 - Ogozaly"
 author: "Walter Ogozaly"
 date: "11/2/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 We'll start by loading the necessary libraries.
-```{r}
+```{r, message=FALSE}
 library("tidyverse")
 library("readxl")
 ```
 
 Now we load the file and filter for Mexico, India, and Indonesia. 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 
 
 kiva_sample <- read_excel("C:/Users/walte/OneDrive/Documents/RStudio Working Directory/Kiva_Sample.xlsx")
@@ -20,8 +22,6 @@ kiva_sample <- read_excel("C:/Users/walte/OneDrive/Documents/RStudio Working Dir
 
 kiva_for_my_three_countries <- filter(kiva_sample, country =="India" | country == "Mexico" | country == "Indonesia")
 ```
-
-## Understanding the business problem.
 
 Below is a box plot showing loan amounts by country. Mexico has the largest Kiva loan amounts, followed by Indonesia and finally India. 
 
